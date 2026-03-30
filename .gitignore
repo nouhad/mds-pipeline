@@ -1,0 +1,71 @@
+# ──────────────────────────────────────────────
+# Python
+# ──────────────────────────────────────────────
+*.pyc
+*.pyo
+__pycache__/
+*.eggs
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyd
+*.so
+
+# ──────────────────────────────────────────────
+# Virtual environments
+# ──────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ──────────────────────────────────────────────
+# VS Code – keep shared settings, ignore personal state
+# ──────────────────────────────────────────────
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# ──────────────────────────────────────────────
+# OS artefacts
+# ──────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ──────────────────────────────────────────────
+# DCC binaries – ignore repo-wide, allow inside exercises/
+# ──────────────────────────────────────────────
+*.mb
+*.ma
+*.hip
+*.hipnc
+*.nk
+*.abc
+!exercises/**/*.mb
+!exercises/**/*.ma
+!exercises/**/*.hip
+!exercises/**/*.nk
+!exercises/**/*.abc
+
+# ──────────────────────────────────────────────
+# Large image assets (keep *.png for thumbnails/docs)
+# ──────────────────────────────────────────────
+*.exr
+*.hdr
+*.tif
+*.tiff
+
+# ──────────────────────────────────────────────
+# Miscellaneous
+# ──────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
