@@ -30,8 +30,8 @@ def main() -> None:
     #         Use mds.versioning.next_version() and print the result.
     # ------------------------------------------------------------------
     existing_versions = ["v001", "v002", "v003"]
-    next_ver = "TODO"  # replace with real call
-    print(f"Next version: {next_ver}")
+    next_version_str = "TODO"  # replace with real call: versioning.next_version(existing_versions)
+    print(f"Next version: {next_version_str}")
 
     # ------------------------------------------------------------------
     # TODO 3: Write a JSON file with scene metadata.
@@ -45,9 +45,9 @@ def main() -> None:
     metadata = {
         "sequence": "010",
         "shot": "0010",
-        "version": next_ver,
+        "version": next_version_str,
     }
-    output_path = shot_path / next_ver / "metadata.json"
+    output_path = shot_path / next_version_str / "metadata.json"
     print(f"Would write to: {output_path}")
     # io.write_json(metadata, output_path)   # uncomment once next_ver is set
 
