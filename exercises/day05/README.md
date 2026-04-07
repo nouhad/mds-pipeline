@@ -1,60 +1,16 @@
-# Day 05 – Capstone: Scene Validator
+# 3D2G04A_3DScripting: Day 05
 
-## Overview
+## Tasks
 
-Day 05 brings everything together. You will build a **complete, production-style scene
-validation tool** that:
+### Task 01: Validator Tool
+Implement `SceneValidator` with `check_naming()`, `check_namespaces()`, `run_all_checks()`, and `export_report()` in `capstone_validator/validator_tool.py`. Commit and push your change.
 
-1. Inspects every DAG object in the scene.
-2. Runs a series of automated checks.
-3. Displays the results in a Qt UI.
-4. Can export a JSON report.
+### Task 02: Validator UI
+Build a `ValidatorWindow` with a "Run Checks" button and a read-only text area that displays pass/fail results in `capstone_validator/validator_ui.py`. Commit and push your change.
 
-This mirrors the kind of tooling used at real VFX and games studios to enforce quality
-standards before assets are published.
+## Submission
 
----
-
-## Learning Goals
-
-- Combine `naming`, `paths`, `versioning`, `io`, and `ui` into one cohesive tool.
-- Separate logic (validator_tool.py) from presentation (validator_ui.py).
-- Write clean, reusable, documented code.
-- Think about extensibility: how would you add a new check?
-
----
-
-## Tasks Checklist
-
-### validator_tool.py (core logic – no UI)
-
-- [ ] Implement `SceneValidator.check_naming()` using `mds.maya.validate.validate_name`.
-- [ ] Implement `SceneValidator.check_namespaces()` using `mds.maya.validate.check_no_namespaces`.
-- [ ] Implement `SceneValidator.run_all_checks()` to call both checks and return results.
-- [ ] Implement `SceneValidator.export_report()` to save results as JSON.
-
-### validator_ui.py (PySide UI)
-
-- [ ] Subclass `BaseWindow`, implement `build_ui()` with a "Run Checks" button and
-  a `QTextEdit` for output.
-- [ ] Implement `on_run_checks()` to run the validator and display results.
-
----
-
-## Submission Steps
-
-1. Branch: `git checkout -b day05/your-name`
-2. Complete both files inside `exercises/day05/capstone_validator/`.
-3. At least **3 meaningful commits** showing progression.
-4. Push and open a PR titled `Day 05 – First Last – exercises`.
-
----
-
-## Stretch Goals
-
-- **Export button**: add a `QPushButton` in the UI that calls `export_report()` and
-  saves the JSON to the shot's output directory using `mds.paths`.
-- **Colour-coded results**: use HTML formatting in `QTextEdit.setHtml()` to show
-  passing checks in green and failing checks in red.
-- **Additional checks**: add a `check_history_deleted` or `check_no_intermediate_objects`
-  method to `SceneValidator`.
+1. Create your branch: `git checkout -b day05/your-name`
+2. Complete each task and commit after each one.
+3. Push: `git push -u origin day05/your-name`
+4. Open a PR titled `Day 05 - Your Name`.
