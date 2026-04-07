@@ -1,114 +1,62 @@
 # Onboarding
 
-Welcome to the MDS scripting intensive. This guide gets you up and running before Day 01.
+Get this done before Day 01.
 
----
+## 1. Python
 
-## 1. Installing Python
+Install Python 3.10 or newer from https://www.python.org/downloads/
 
-We require **Python 3.10 or newer**.
+On Windows, tick "Add Python to PATH" during installation. Verify with `python --version`.
 
-### Option A – python.org (recommended for beginners)
-1. Go to <https://www.python.org/downloads/> and download the latest 3.x installer.
-2. On Windows, tick **"Add Python to PATH"** during installation.
-3. Verify: open a terminal and run `python --version`.
+If you need to manage multiple versions, use [pyenv](https://github.com/pyenv/pyenv).
 
-### Option B – pyenv (recommended for managing multiple versions)
-```bash
-# macOS / Linux
-brew install pyenv          # macOS with Homebrew
-pyenv install 3.11.9
-pyenv global 3.11.9
-```
-See <https://github.com/pyenv/pyenv> for full instructions.
+## 2. VS Code
 
----
+Download from https://code.visualstudio.com/ and open the repo folder. VS Code will prompt you to install the recommended extensions from `.vscode/extensions.json` — click Install All.
 
-## 2. Installing VS Code
+Key extensions: `ms-python.python`, `ms-python.vscode-pylance`, `eamodio.gitlens`, `editorconfig.editorconfig`.
 
-1. Download from <https://code.visualstudio.com/>.
-2. Open the repo folder: **File → Open Folder → mds-pipeline**.
-3. VS Code will prompt you to install the recommended extensions
-   listed in `.vscode/extensions.json`. Click **Install All**.
+## 3. Git
 
-Key extensions:
-| Extension | Purpose |
-|---|---|
-| ms-python.python | Python language support |
-| ms-python.vscode-pylance | Fast type checking & autocomplete |
-| eamodio.gitlens | Inline Git blame & history |
-| editorconfig.editorconfig | Enforces `.editorconfig` settings |
+- macOS: `brew install git` or `xcode-select --install`
+- Windows: https://git-scm.com/download/win
+- Linux: `sudo apt install git` or `sudo dnf install git`
 
----
-
-## 3. Installing Git
-
-- **macOS**: `brew install git` or Xcode Command Line Tools (`xcode-select --install`)
-- **Windows**: <https://git-scm.com/download/win> (Git for Windows)
-- **Linux**: `sudo apt install git` or `sudo dnf install git`
-
-Verify: `git --version`
-
----
+Verify with `git --version`.
 
 ## 4. GitHub Authentication
 
-### Option A – SSH key (recommended)
+SSH (recommended):
 ```bash
 ssh-keygen -t ed25519 -C "you@example.com"
-# Copy the public key:
 cat ~/.ssh/id_ed25519.pub
-# Paste it at: GitHub → Settings → SSH and GPG keys → New SSH key
 ```
+Paste the output into GitHub → Settings → SSH and GPG keys → New SSH key.
 
-### Option B – HTTPS with a Personal Access Token (PAT)
-1. GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens.
-2. Grant **Contents: read & write** for your assignment repo.
-3. When Git asks for a password, paste the token.
+HTTPS: create a Personal Access Token at GitHub → Settings → Developer settings → Personal access tokens. Grant Contents read & write. Use it as your password when Git prompts.
 
----
-
-## 5. Cloning Your Assignment Repo
+## 5. Clone Your Repo
 
 Your instructor will share a GitHub Classroom link. After accepting:
 
 ```bash
-# SSH (recommended if you set up a key)
 git clone git@github.com:YOUR-ORG/mds-pipeline-YOUR-NAME.git
-
-# HTTPS
-git clone https://github.com/YOUR-ORG/mds-pipeline-YOUR-NAME.git
-
 cd mds-pipeline-YOUR-NAME
 ```
 
----
+## 6. Set PYTHONPATH
 
-## 6. Setting PYTHONPATH
-
-The `src/` directory must be on your Python path so that `import mds` works.
-
-See [../scripts/set_pythonpath.md](../scripts/set_pythonpath.md) for platform-specific
-one-liners. VS Code is already configured via `python.analysis.extraPaths`.
-
-Quick version:
 ```bash
-# Linux / macOS (add to ~/.bashrc or ~/.zshrc for persistence)
-export PYTHONPATH="$PWD/src:$PYTHONPATH"
+export PYTHONPATH="$PWD/src:$PYTHONPATH"   # Linux / macOS
+# set PYTHONPATH=%CD%\src;%PYTHONPATH%     # Windows cmd
 ```
 
----
+VS Code is already configured via `python.analysis.extraPaths`. See [../scripts/set_pythonpath.md](../scripts/set_pythonpath.md) to make this persistent.
 
-## 7. Running Tests
+## 7. Run the Tests
 
 ```bash
-# From the repo root, with PYTHONPATH set:
 pytest tests/ -v
 ```
 
-All tests should pass on a clean clone. If any fail, check your Python version and
-that `PYTHONPATH` includes `src/`.
-
-You can also run tests inside VS Code via the **Testing** panel (beaker icon in the
-sidebar). VS Code uses the settings in `.vscode/settings.json` to discover tests
-automatically.
+All tests should pass on a clean clone. If any fail, check your Python version and that `PYTHONPATH` includes `src/`. You can also run tests from the VS Code Testing panel (beaker icon).
