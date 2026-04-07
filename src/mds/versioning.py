@@ -7,34 +7,34 @@ import re
 
 from mds import config
 
-_VERSION_RE = re.compile(config.VERSION_PATTERN)
+_versionRe = re.compile(config.VERSION_PATTERN)
 
 
-def parse_version(version_str: str) -> int:
+def parseVersion(versionStr: str) -> int:
     """Parse a version string to an integer.
 
     Args:
-        version_str: A version string such as ``"v007"``.
+        versionStr: A version string such as ``"v007"``.
 
     Returns:
         The integer part of the version, e.g. ``7``.
 
     Raises:
-        ValueError: If *version_str* does not match ``v###``.
+        ValueError: If *versionStr* does not match ``v###``.
 
     Examples:
-        >>> parse_version("v007")
+        >>> parseVersion("v007")
         7
     """
-    match = _VERSION_RE.match(version_str)
+    match = _versionRe.match(versionStr)
     if not match:
         raise ValueError(
-            f"Invalid version string '{version_str}': must match '{config.VERSION_PATTERN}'"
+            f"Invalid version string '{versionStr}': must match '{config.VERSION_PATTERN}'"
         )
     return int(match.group(1))
 
 
-def format_version(number: int) -> str:
+def formatVersion(number: int) -> str:
     """Format an integer as a version string.
 
     Args:
@@ -44,17 +44,17 @@ def format_version(number: int) -> str:
         Zero-padded version string, e.g. ``"v003"``.
 
     Examples:
-        >>> format_version(3)
+        >>> formatVersion(3)
         'v003'
     """
     return f"v{number:03d}"
 
 
-def next_version(existing_versions: list[str]) -> str:
-    """Return the next version string after the highest in *existing_versions*.
+def nextVersion(existingVersions: list[str]) -> str:
+    """Return the next version string after the highest in *existingVersions*.
 
     Args:
-        existing_versions: A list of version strings, e.g. ``["v001", "v003"]``.
+        existingVersions: A list of version strings, e.g. ``["v001", "v003"]``.
             May be empty or contain versions in any order.
 
     Returns:
@@ -62,12 +62,12 @@ def next_version(existing_versions: list[str]) -> str:
         Returns ``"v001"`` when the list is empty.
 
     Examples:
-        >>> next_version(["v001", "v002"])
+        >>> nextVersion(["v001", "v002"])
         'v003'
-        >>> next_version([])
+        >>> nextVersion([])
         'v001'
     """
-    if not existing_versions:
+    if not existingVersions:
         return config.DEFAULT_VERSION
-    highest = max(parse_version(v) for v in existing_versions)
-    return format_version(highest + 1)
+    highest = max(parseVersion(v) for v in existingVersions)
+    return formatVersion(highest + 1)

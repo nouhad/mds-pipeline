@@ -4,10 +4,10 @@ All code in this repo (exercises and `src/mds/`) follows PEP 8 with these additi
 
 ## Naming
 
-- Functions, methods, variables, files: `snake_case` — e.g. `build_name()`, `scene_name`, `naming.py`
+- Functions, methods, variables, files: `camelCase` — e.g. `buildName()`, `sceneName`, `baseWindow.py`
 - Classes: `PascalCase` — e.g. `SceneValidator`, `BaseWindow`
 - Module-level constants: `UPPER_SNAKE_CASE` — e.g. `DEFAULT_VERSION`, `SEQ_TOKEN`
-- Private/internal: leading underscore — e.g. `_parse_internal()`
+- Private/internal: leading underscore — e.g. `_parseInternal()`
 
 Avoid abbreviations unless universally understood (`obj`, `idx`, `num` are fine).
 
@@ -16,7 +16,7 @@ Avoid abbreviations unless universally understood (`obj`, `idx`, `num` are fine)
 Use Google-style docstrings. Every public function, class, and module must have one.
 
 ```python
-def build_name(prefix: str, descriptor: str, index: int) -> str:
+def buildName(prefix: str, descriptor: str, index: int) -> str:
     """Build a standardised asset name.
 
     Args:
@@ -37,9 +37,9 @@ def build_name(prefix: str, descriptor: str, index: int) -> str:
 Use type hints on all public function signatures:
 
 ```python
-def parse_version(version_str: str) -> int: ...
-def next_version(existing_versions: list[str]) -> str: ...
-def read_json_safe(path: Path | str, default: dict | None = None) -> dict: ...
+def parseVersion(versionStr: str) -> int: ...
+def nextVersion(existingVersions: list[str]) -> str: ...
+def readJsonSafe(path: Path | str, default: dict | None = None) -> dict: ...
 ```
 
 Use `X | Y` over `Optional[X]` (Python 3.10+).

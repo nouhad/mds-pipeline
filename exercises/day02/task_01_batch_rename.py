@@ -4,18 +4,18 @@
 
 import maya.cmds as cmds
 
-from mds.naming import build_name
-from mds.maya.scene import get_selection
+from mds.naming import buildName
+from mds.maya.scene import getSelection
 
 
 # Task 1: Get the current selection.
-selected = get_selection()
+selected = getSelection()
 
 # Task 2: Loop through selected objects and rename each one.
 prefix = "geo"
 descriptor = "object"
 
-for index, old_name in enumerate(selected, start=1):
-    new_name = cmds.rename(old_name, build_name(prefix, descriptor, index))
-    print(f"{old_name}  ->  {new_name}")
+for index, oldName in enumerate(selected, start=1):
+    newName = cmds.rename(oldName, buildName(prefix, descriptor, index))
+    print(f"{oldName}  ->  {newName}")
 

@@ -8,21 +8,21 @@ import mds.io as io
 
 
 # Task 1: Construct the shot directory path.
-shot_path = paths.shot_dir("010", "0010")
+shot_path = paths.shotDir("010", "0010")
 print(f"Shot directory: {shot_path}")
 
 # Task 2: Get the next version from a list of existing versions.
 existing_versions = ["v001", "v002", "v003"]
-next_ver = versioning.next_version(existing_versions)
+next_ver = versioning.nextVersion(existing_versions)
 print(f"Next version: {next_ver}")
 
 # Task 3: Write a JSON metadata file to the versioned shot path.
 metadata = {"sequence": "010", "shot": "0010", "version": next_ver}
 output_path = shot_path / next_ver / "metadata.json"
-io.write_json(metadata, output_path)
+io.writeJson(metadata, output_path)
 print(f"Wrote metadata to: {output_path}")
 
 # Task 4: Read the JSON back and print its contents.
-loaded = io.read_json(output_path)
+loaded = io.readJson(output_path)
 print("Loaded metadata:", loaded)
 

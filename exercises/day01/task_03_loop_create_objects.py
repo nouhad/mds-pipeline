@@ -12,7 +12,7 @@ import maya.cmds as cmds
 cubes = []
 
 for i in range(5):
-    cube_transform, poly_cube_node = cmds.polyCube()
-    cmds.move(i * 3, 0, 0, cube_transform)
-    cubes.append(cube_transform)
-    print("Created:", cube_transform)
+    cubeTransform, polyCubeNode = cmds.polyCube()
+    cmds.move(i * 3, 0, 0, cubeTransform)
+    cubes.append(cubeTransform)
+    print("Created:", cubeTransform)

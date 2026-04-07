@@ -7,24 +7,24 @@ try:
 except ImportError:
     from PySide6.QtWidgets import QTextEdit
 
-from mds.ui.base_window import BaseWindow, QPushButton
+from mds.ui.baseWindow import BaseWindow, QPushButton
 from exercises.day05.capstone_validator.validator_tool import SceneValidator
 
 
 class ValidatorWindow(BaseWindow):
 
-    def build_ui(self):
-        run_btn = QPushButton("Run Checks")
-        run_btn.clicked.connect(self.on_run_checks)
-        self._layout.addWidget(run_btn)
+    def buildUi(self):
+        runBtn = QPushButton("Run Checks")
+        runBtn.clicked.connect(self.onRunChecks)
+        self._layout.addWidget(runBtn)
 
         self._output = QTextEdit()
         self._output.setReadOnly(True)
         self._layout.addWidget(self._output)
 
-    def on_run_checks(self):
+    def onRunChecks(self):
         validator = SceneValidator()
-        results = validator.run_all_checks()
+        results = validator.runAllChecks()
 
         lines = ["=== Scene Validation Results ===\n"]
         for r in results:
@@ -40,5 +40,5 @@ class ValidatorWindow(BaseWindow):
 
 
 window = ValidatorWindow(title="MDS Scene Validator")
-window.show_window()
+window.showWindow()
 
