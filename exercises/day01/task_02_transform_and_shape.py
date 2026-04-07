@@ -9,7 +9,7 @@ import maya.cmds as cmds
 sphere_transform = cmds.polySphere()[0]
 
 # Task 2: Create a cube and store its transform node in a variable.
-cube_transform = cmds.polyCube()[0]
+cube_transform, poly_cube_node = cmds.polyCube()
 
 # Task 3: Print the transform node and shape node for each object.
 sphere_shape = cmds.listRelatives(sphere_transform, shapes=True)[0]
