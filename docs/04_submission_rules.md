@@ -1,57 +1,22 @@
 # Submission Rules
 
-Read this carefully before submitting each day's work.
-
----
-
 ## Branch Naming
 
-Format: `dayNN/firstname-lastname`
+Format: `dayNN/firstname-lastname` — e.g. `day01/jane-smith`. Lowercase, hyphens only, no spaces.
 
-Examples:
-- `day01/jane-smith`
-- `day03/alex-johnson`
+## Commits
 
-Branch names must be **lowercase with hyphens** between name parts. No spaces, no
-capital letters.
+Make at least 3 meaningful commits per day. A single end-of-day commit is not acceptable. Commit after each task or logical step.
 
----
+## PR Title
 
-## Minimum Commits Per Day
+Format: `Day NN – First Last – exercises` — e.g. `Day 01 – Jane Smith – exercises`. Incorrect titles will be returned before review.
 
-You must make **at least 3 meaningful commits** per day. A single "finished everything"
-commit at the end is not acceptable.
+## PR Description
 
-Think of commits as save points that show your progression:
+Fill in the following when opening your PR:
 
 ```
-feat: print scene name and Maya version        ← task 01 done
-feat: get selection and print count            ← task 02 first attempt
-fix: handle empty selection without crashing   ← bug fix
-docs: add notes about cmds.objectType          ← optional but good
-```
-
----
-
-## PR Title Format
-
-```
-Day NN – First Last – exercises
-```
-
-Examples:
-- `Day 01 – Jane Smith – exercises`
-- `Day 03 – Alex Johnson – exercises`
-
-PRs with incorrect titles will be returned for correction before review.
-
----
-
-## PR Description Template
-
-When opening your PR, fill in the following:
-
-```markdown
 ## What I did
 - Completed task_01: printed scene name and Maya version
 - Completed task_02: selection report with object types
@@ -67,28 +32,10 @@ When opening your PR, fill in the following:
 - Is there a cleaner way to handle the empty-selection case?
 ```
 
----
-
 ## Deadlines
 
-| Day | Branch due by |
-|---|---|
-| Day 01 | End of Day 01, 17:00 |
-| Day 02 | End of Day 02, 17:00 |
-| Day 03 | End of Day 03, 17:00 |
-| Day 04 | End of Day 04, 17:00 |
-| Day 05 | End of Day 05, 18:00 (capstone) |
-
-Late submissions lose one letter grade per hour unless prior notice is given.
-
----
+PRs are due by 17:00 on each day (18:00 for Day 05). Late submissions lose one letter grade per hour unless prior notice is given.
 
 ## Academic Integrity
 
-- You may discuss approaches with classmates but **write your own code**.
-- Do not copy another student's implementation verbatim.
-- Citing Stack Overflow or documentation in a comment is fine and encouraged.
-- Use of AI assistants (ChatGPT, Copilot, etc.) is permitted **only** if you understand
-  every line you submit and can explain it when asked. Paste-without-understanding is
-  a violation.
-- Violations result in a zero for the day and a meeting with the programme director.
+Discuss approaches with classmates but write your own code. Do not copy another student's implementation. Citing Stack Overflow or docs in a comment is encouraged. AI tools are permitted only if you understand every line you submit and can explain it when asked. Paste-without-understanding is a violation and results in a zero for the day.
