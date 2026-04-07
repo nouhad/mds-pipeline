@@ -75,7 +75,7 @@ except ImportError:
 class BaseWindow(QWidget):
     """Reusable base class for all MDS tool windows.
 
-    Subclass this and implement :meth:`build_ui` to add widgets to
+    Subclass this and implement :meth:`buildUi` to add widgets to
     ``self._layout``.
 
     Args:
