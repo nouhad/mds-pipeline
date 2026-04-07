@@ -4,7 +4,7 @@
 
 import maya.cmds as cmds
 
-from mds.naming import build_name
+from mds.naming import buildName
 
 
 # Task 1: Define grid dimensions and spacing.
@@ -20,7 +20,7 @@ for row in range(rows):
     for col in range(columns):
         transform, _ = cmds.polySphere()
         cmds.xform(transform, translation=[col * spacing, 0, row * spacing])
-        cmds.rename(transform, build_name("geo", "sphere", index))
+        cmds.rename(transform, buildName("geo", "sphere", index))
         index += 1
 
 print(f"Created {rows * columns} spheres in a {rows}x{columns} grid.")

@@ -20,7 +20,7 @@ _DEFAULT_ROTATE = [0.0, 0.0, 0.0]
 _DEFAULT_SCALE = [1.0, 1.0, 1.0]
 
 
-def validate_name(node: str) -> bool:
+def validateName(node: str) -> bool:
     """Check whether a node's short name conforms to the MDS naming convention.
 
     The short name is the portion of *node* after the last ``|`` (pipe), which
@@ -34,11 +34,11 @@ def validate_name(node: str) -> bool:
     Returns:
         ``True`` if the short name is valid, ``False`` otherwise.
     """
-    short_name = node.split("|")[-1]
-    return naming.is_valid_name(short_name)
+    shortName = node.split("|")[-1]
+    return naming.isValidName(shortName)
 
 
-def check_no_namespaces(nodes: list[str]) -> list[str]:
+def checkNoNamespaces(nodes: list[str]) -> list[str]:
     """Return nodes that contain a namespace separator (``:``) in their name.
 
     Namespaces are not permitted in publish-ready assets. Use this check before
@@ -55,7 +55,7 @@ def check_no_namespaces(nodes: list[str]) -> list[str]:
     return [n for n in nodes if ":" in n]
 
 
-def check_frozen_transforms(node: str) -> bool:
+def checkFrozenTransforms(node: str) -> bool:
     """Return True if the node's transforms are frozen (at identity values).
 
     Checks translate (0,0,0), rotate (0,0,0), and scale (1,1,1).

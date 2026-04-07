@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 
-def read_json(path: Path | str) -> dict:
+def readJson(path: Path | str) -> dict:
     """Read a JSON file and return its contents as a dictionary.
 
     Args:
@@ -30,7 +30,7 @@ def read_json(path: Path | str) -> dict:
         return json.load(fh)
 
 
-def write_json(data: dict, path: Path | str, indent: int = 2) -> None:
+def writeJson(data: dict, path: Path | str, indent: int = 2) -> None:
     """Write a dictionary to a JSON file, creating parent directories as needed.
 
     Args:
@@ -45,7 +45,7 @@ def write_json(data: dict, path: Path | str, indent: int = 2) -> None:
         fh.write("\n")  # ensure trailing newline
 
 
-def read_json_safe(path: Path | str, default: dict | None = None) -> dict:
+def readJsonSafe(path: Path | str, default: dict | None = None) -> dict:
     """Read a JSON file, returning *default* instead of raising if it is missing.
 
     Args:
@@ -58,6 +58,6 @@ def read_json_safe(path: Path | str, default: dict | None = None) -> dict:
     if default is None:
         default = {}
     try:
-        return read_json(path)
+        return readJson(path)
     except FileNotFoundError:
         return default

@@ -14,7 +14,7 @@ VALID_NAME_PATTERN: str = r"^[a-z][a-z0-9_]*$"
 """Names must start with a lowercase letter and contain only lowercase
 alphanumeric characters and underscores."""
 
-_VALID_NAME_RE = re.compile(VALID_NAME_PATTERN)
+_validNameRe = re.compile(VALID_NAME_PATTERN)
 
 # ---------------------------------------------------------------------------
 # Project root

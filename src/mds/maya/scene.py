@@ -14,7 +14,7 @@ except ImportError:
     cmds = None  # type: ignore[assignment]
 
 
-def get_scene_name() -> str:
+def getSceneName() -> str:
     """Return the full path of the currently open Maya scene file.
 
     Returns:
@@ -26,11 +26,11 @@ def get_scene_name() -> str:
     return cmds.file(query=True, sceneName=True) or ""
 
 
-def list_dag_objects(type_filter: str = "") -> list[str]:
+def listDagObjects(typeFilter: str = "") -> list[str]:
     """Return a list of DAG objects in the current scene.
 
     Args:
-        type_filter: Optional Maya node type string to filter by (e.g. ``"mesh"``).
+        typeFilter: Optional Maya node type string to filter by (e.g. ``"mesh"``).
             When empty, all DAG nodes are returned.
 
     Returns:
@@ -39,13 +39,13 @@ def list_dag_objects(type_filter: str = "") -> list[str]:
     if cmds is None:
         return []
     kwargs: dict = {"dag": True, "long": False}
-    if type_filter:
-        kwargs["type"] = type_filter
+    if typeFilter:
+        kwargs["type"] = typeFilter
     result = cmds.ls(**kwargs)
     return result if result else []
 
 
-def get_selection() -> list[str]:
+def getSelection() -> list[str]:
     """Return the names of currently selected objects.
 
     Returns:
@@ -58,7 +58,7 @@ def get_selection() -> list[str]:
     return result if result else []
 
 
-def open_scene(path: str) -> bool:
+def openScene(path: str) -> bool:
     """Open a Maya scene file, discarding unsaved changes.
 
     This function forcibly opens *path* without prompting to save the current

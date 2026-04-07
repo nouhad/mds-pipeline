@@ -10,7 +10,7 @@ from pathlib import Path
 from mds import config
 
 
-def get_project_root() -> Path:
+def getProjectRoot() -> Path:
     """Return the filesystem root for all MDS projects.
 
     Checks the ``MDS_PROJECT_ROOT`` environment variable first.
@@ -19,13 +19,13 @@ def get_project_root() -> Path:
     Returns:
         Absolute path to the project root directory.
     """
-    env_root = os.environ.get("MDS_PROJECT_ROOT")
-    if env_root:
-        return Path(env_root)
+    envRoot = os.environ.get("MDS_PROJECT_ROOT")
+    if envRoot:
+        return Path(envRoot)
     return config.DEFAULT_PROJECT_ROOT
 
 
-def shot_dir(seq: str, shot: str) -> Path:
+def shotDir(seq: str, shot: str) -> Path:
     """Return the directory for a specific shot.
 
     Args:
@@ -35,10 +35,10 @@ def shot_dir(seq: str, shot: str) -> Path:
     Returns:
         Path of the form ``<project_root>/sq010/sh0010``.
     """
-    return get_project_root() / f"{config.SEQ_TOKEN}{seq}" / f"{config.SHOT_TOKEN}{shot}"
+    return getProjectRoot() / f"{config.SEQ_TOKEN}{seq}" / f"{config.SHOT_TOKEN}{shot}"
 
 
-def playblast_dir(seq: str, shot: str, version: str) -> Path:
+def playblastDir(seq: str, shot: str, version: str) -> Path:
     """Return the versioned playblast output directory for a shot.
 
     Args:
@@ -50,14 +50,14 @@ def playblast_dir(seq: str, shot: str, version: str) -> Path:
         Path of the form ``<shot_dir>/outputs/playblasts/<version>``.
     """
     return (
-        shot_dir(seq, shot)
+        shotDir(seq, shot)
         / config.FOLDER_OUTPUTS
         / config.FOLDER_PLAYBLASTS
         / version
     )
 
 
-def cache_dir(seq: str, shot: str, version: str) -> Path:
+def cacheDir(seq: str, shot: str, version: str) -> Path:
     """Return the versioned cache output directory for a shot.
 
     Args:
@@ -69,14 +69,14 @@ def cache_dir(seq: str, shot: str, version: str) -> Path:
         Path of the form ``<shot_dir>/outputs/cache/<version>``.
     """
     return (
-        shot_dir(seq, shot)
+        shotDir(seq, shot)
         / config.FOLDER_OUTPUTS
         / config.FOLDER_CACHE
         / version
     )
 
 
-def ensure_dir(path: Path) -> Path:
+def ensureDir(path: Path) -> Path:
     """Create *path* (and any missing parents) if it does not already exist.
 
     Args:

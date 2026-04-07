@@ -9,43 +9,43 @@ try:
 except ImportError:
     from PySide6.QtWidgets import QLineEdit, QLabel
 
-from mds.ui.base_window import BaseWindow, QPushButton
-from mds.maya.scene import get_selection
-from mds.naming import build_name
+from mds.ui.baseWindow import BaseWindow, QPushButton
+from mds.maya.scene import getSelection
+from mds.naming import buildName
 
 
 class BatchRenameWindow(BaseWindow):
 
-    def build_ui(self):
-        self._prefix_field = QLineEdit("geo")
-        self._layout.addWidget(self._prefix_field)
+    def buildUi(self):
+        self._prefixField = QLineEdit("geo")
+        self._layout.addWidget(self._prefixField)
 
-        self._descriptor_field = QLineEdit("object")
-        self._layout.addWidget(self._descriptor_field)
+        self._descriptorField = QLineEdit("object")
+        self._layout.addWidget(self._descriptorField)
 
-        rename_btn = QPushButton("Rename Selected")
-        rename_btn.clicked.connect(self._on_rename)
-        self._layout.addWidget(rename_btn)
+        renameBtn = QPushButton("Rename Selected")
+        renameBtn.clicked.connect(self._onRename)
+        self._layout.addWidget(renameBtn)
 
-        self._status_label = QLabel("")
-        self._layout.addWidget(self._status_label)
+        self._statusLabel = QLabel("")
+        self._layout.addWidget(self._statusLabel)
 
-    def _on_rename(self):
-        prefix = self._prefix_field.text().strip()
-        descriptor = self._descriptor_field.text().strip()
-        selected = get_selection()
+    def _onRename(self):
+        prefix = self._prefixField.text().strip()
+        descriptor = self._descriptorField.text().strip()
+        selected = getSelection()
 
         if not selected:
-            self._status_label.setText("Nothing selected.")
+            self._statusLabel.setText("Nothing selected.")
             return
 
         for index, old_name in enumerate(selected, start=1):
-            new_name = cmds.rename(old_name, build_name(prefix, descriptor, index))
+            new_name = cmds.rename(old_name, buildName(prefix, descriptor, index))
             print(f"  {old_name}  ->  {new_name}")
 
-        self._status_label.setText(f"{len(selected)} object(s) renamed.")
+        self._statusLabel.setText(f"{len(selected)} object(s) renamed.")
 
 
 window = BatchRenameWindow(title="MDS Batch Rename")
-window.show_window()
+window.showWindow()
 

@@ -9,20 +9,20 @@ headless CI environment) a ``_DummyWidget`` base class is used so that the modul
 can still be imported and tools can be tested without a display.
 
 To create a custom tool window, subclass ``BaseWindow`` and override
-``build_ui()``::
+``buildUi()``::
 
     class MyTool(BaseWindow):
-        def build_ui(self):
+        def buildUi(self):
             btn = QPushButton("Do Thing")
-            btn.clicked.connect(self._do_thing)
+            btn.clicked.connect(self._doThing)
             self._layout.addWidget(btn)
 
-        def _do_thing(self):
+        def _doThing(self):
             print("doing the thing")
 
     # In Maya or a standalone Qt application:
     win = MyTool(title="My Tool")
-    win.show_window()
+    win.showWindow()
 """
 
 try:
@@ -87,18 +87,18 @@ class BaseWindow(QWidget):
         super().__init__(parent)
         self.setWindowTitle(title)
         self._layout = QVBoxLayout(self)
-        self.build_ui()
+        self.buildUi()
 
-    def build_ui(self) -> None:
+    def buildUi(self) -> None:
         """Populate the window with widgets.
 
         Raises:
             NotImplementedError: Subclasses must override this method.
         """
         raise NotImplementedError(
-            f"{type(self).__name__} must implement build_ui()"
+            f"{type(self).__name__} must implement buildUi()"
         )
 
-    def show_window(self) -> None:
+    def showWindow(self) -> None:
         """Make the window visible."""
         self.show()

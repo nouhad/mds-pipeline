@@ -8,10 +8,10 @@ import re
 
 from mds import config
 
-_VALID_RE = re.compile(config.VALID_NAME_PATTERN)
+_validRe = re.compile(config.VALID_NAME_PATTERN)
 
 
-def is_valid_name(name: str) -> bool:
+def isValidName(name: str) -> bool:
     """Return True if *name* matches the MDS naming convention.
 
     A valid name starts with a lowercase letter and contains only lowercase
@@ -24,17 +24,17 @@ def is_valid_name(name: str) -> bool:
         True if valid, False otherwise.
 
     Examples:
-        >>> is_valid_name("geo_sphere_001")
+        >>> isValidName("geo_sphere_001")
         True
-        >>> is_valid_name("GeoSphere")
+        >>> isValidName("GeoSphere")
         False
     """
     if not name:
         return False
-    return bool(_VALID_RE.match(name))
+    return bool(_validRe.match(name))
 
 
-def build_name(prefix: str, descriptor: str, index: int) -> str:
+def buildName(prefix: str, descriptor: str, index: int) -> str:
     """Build a standardised three-part asset name.
 
     Args:
@@ -49,21 +49,21 @@ def build_name(prefix: str, descriptor: str, index: int) -> str:
         ValueError: If *prefix* or *descriptor* do not match VALID_NAME_PATTERN.
 
     Examples:
-        >>> build_name("geo", "sphere", 1)
+        >>> buildName("geo", "sphere", 1)
         'geo_sphere_001'
     """
-    if not is_valid_name(prefix):
+    if not isValidName(prefix):
         raise ValueError(
             f"Invalid prefix '{prefix}': must match '{config.VALID_NAME_PATTERN}'"
         )
-    if not is_valid_name(descriptor):
+    if not isValidName(descriptor):
         raise ValueError(
             f"Invalid descriptor '{descriptor}': must match '{config.VALID_NAME_PATTERN}'"
         )
     return f"{prefix}_{descriptor}_{index:03d}"
 
 
-def tokenise_name(name: str) -> list[str]:
+def tokeniseName(name: str) -> list[str]:
     """Split a name string on underscores and return the list of tokens.
 
     Args:
@@ -73,7 +73,7 @@ def tokenise_name(name: str) -> list[str]:
         List of token strings, e.g. ``["geo", "sphere", "001"]``.
 
     Examples:
-        >>> tokenise_name("geo_sphere_001")
+        >>> tokeniseName("geo_sphere_001")
         ['geo', 'sphere', '001']
     """
     return name.split("_")
